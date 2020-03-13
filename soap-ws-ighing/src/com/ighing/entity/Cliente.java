@@ -40,7 +40,6 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 	 
-	
 	 @Override
 	public String toString() {
 		return "{id:" + id + ", nombre:" +nombre+", direccion:" +direccion+", telefono:"+telefono+"}";
