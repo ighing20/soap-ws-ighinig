@@ -15,8 +15,11 @@ public class ClienteService {
 	ClienteRepository repository = new ClienteRepository(new HashMap<>());
 
 	@WebMethod
-	public String crearCliente() {
-		return null;
+	public String crearCliente(Cliente cliente) {
+		repository.put(cliente);
+		String mensaje = "Ya se ingreso al cliente " + cliente.getNombre() + "con su numero " + cliente.getTelefono() + " y direccion "
+				+ cliente.getDireccion() + ".";
+		return mensaje;
 	}
 	
 	@WebMethod
