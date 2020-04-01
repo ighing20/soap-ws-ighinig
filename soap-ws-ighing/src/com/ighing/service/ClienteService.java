@@ -1,7 +1,8 @@
 package com.ighing.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -9,21 +10,21 @@ import javax.jws.WebService;
 import com.ighing.entity.Cliente;
 import com.ighing.repository.ClienteRepository;
 
-@WebService  
+@WebService(serviceName = "ClienteService")
 public class ClienteService {
-	
+
 	ClienteRepository repository = new ClienteRepository(new HashMap<>());
 
 	@WebMethod
 	public String crearCliente(Cliente cliente) {
 		repository.put(cliente);
-		String mensaje = "Ya se ingreso al cliente " + cliente.getNombre() + "con su numero " + cliente.getTelefono() + " y direccion "
-				+ cliente.getDireccion() + ".";
+		String mensaje = "Ya se ingreso al cliente " + cliente.getNombre() + "con su numero " + cliente.getTelefono()
+				+ " y direccion " + cliente.getDireccion() + ".";
 		return mensaje;
 	}
-	
+
 	@WebMethod
-	public Map<Integer, Cliente> consultarCliente(){
-		return null;
+	public List<Cliente> consultarCliente() {
+		return new ArrayList<>(repository.all().values());
 	}
 }
